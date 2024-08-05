@@ -4,21 +4,23 @@ class Textform extends StatelessWidget {
   final String label;
   TextEditingController controller;
   final IconData icons;
-  Textform(
-      {super.key,
-      required this.icons,
-      required this.label,
-      required this.controller,
-      });
+  Textform({
+    super.key,
+    required this.icons,
+    required this.label,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: TextStyle(fontSize: 25),
+      style: TextStyle(fontSize: 15),
       controller: controller,
       decoration: InputDecoration(
-          suffixIcon: Icon(icons),
-        
+          suffixIcon: Icon(
+            icons,
+            color: Colors.grey,
+          ),
           border: OutlineInputBorder(
               borderSide: BorderSide(
                   style: BorderStyle.solid,
