@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Buton extends StatelessWidget {
   final VoidCallback onpress;
   final String title;
-  const Buton({super.key, required this.onpress, required this.title});
+  const Buton({super.key, required this.onpress, required this.title, });
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,7 @@ class Buton extends StatelessWidget {
 class Button extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
+  
   const Button({super.key, required this.title, required this.onPressed});
 
   @override
