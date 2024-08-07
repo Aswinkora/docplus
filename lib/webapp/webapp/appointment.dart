@@ -1,123 +1,187 @@
-import 'package:docplus/logos/logos.dart';
-import 'package:docplus/webapp/webapp/componentsweb/constweb.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
-class BookAppoinment extends StatefulWidget {
-  const BookAppoinment({super.key});
-
-  @override
-  State<BookAppoinment> createState() => _BookAppoinmentState();
+void main() {
+  runApp(MaterialApp(
+    home: BookAppointment(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
-class _BookAppoinmentState extends State<BookAppoinment> {
+class BookAppointment extends StatefulWidget {
+  const BookAppointment({super.key});
+
+  @override
+  State<BookAppointment> createState() => _BookAppointmentState();
+}
+
+class _BookAppointmentState extends State<BookAppointment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.home,
-                size: 30,
+      backgroundColor: Colors.white,
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () {},
+      //       icon: Icon(Icons.home, size: 30, color: Colors.blue),
+      //     ),
+      //   ],
+      // ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.all(16.0),
                 color: Colors.white,
-              ))
-        ],
-        backgroundColor: webprimary,
-        title: Center(
-            child: Text(
-          'BOOKAPPOINTMENT',
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        )),
-      ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Container(
-                  color: websecond,
-                  height: MediaQuery.of(context).size.height / 2,
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('images/webimage.png'))),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: DropdownSearch(
-                          dropdownDecoratorProps: DropDownDecoratorProps(
-                              dropdownSearchDecoration: InputDecoration(
-                                  labelText: 'select department',
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset(
+                          'images/webimage.png', // Replace with your image path
+                          height: 150,
+                          width: 150,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(width: 100),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Take appointments seamlessly',
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 30),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 15, left: 15),
+                                  child: StepIndicator(step: '01', label: 'Select doctor'),
+                                ),
+                                StepIndicator(step: '02', label: 'Choose date & time'),
+                                StepIndicator(step: '03', label: 'Enter details & book'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: SizedBox(
+                              width: 150, // Set desired width here
+                              child: DropdownButtonFormField(
+                                decoration: InputDecoration(
+                                  labelText: 'Select Department',
                                   prefixIcon: Icon(Icons.search),
                                   border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(13)))),
-                          items: [
-                            'ALL department',
-                            'neuro',
-                            'Dentistry',
-                            'Cardiology',
-                          ],
+                                    borderRadius: BorderRadius.circular(13),
+                                  ),
+                                ),
+                                items: [
+                                  DropdownMenuItem(child: Text('All Departments'), value: 'all'),
+                                  DropdownMenuItem(child: Text('Neurology'), value: 'neuro'),
+                                  DropdownMenuItem(child: Text('Dentistry'), value: 'dentistry'),
+                                  DropdownMenuItem(child: Text('Cardiology'), value: 'cardiology'),
+                                ],
+                                onChanged: (value) {},
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: SizedBox(
+                              width: 150, // Set desired width here
+                              child: DropdownButtonFormField(
+                                decoration: InputDecoration(
+                                  labelText: 'Select Doctor',
+                                  prefixIcon: Icon(Icons.search),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(13),
+                                  ),
+                                ),
+                                items: [
+                                  DropdownMenuItem(child: Text('All Doctors'), value: 'all'),
+                                  DropdownMenuItem(child: Text('Dr. John'), value: 'john'),
+                                  DropdownMenuItem(child: Text('Dr. Asha'), value: 'asha'),
+                                  DropdownMenuItem(child: Text('Dr. Smith'), value: 'smith'),
+                                ],
+                                onChanged: (value) {},
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(150, 40),
+                        backgroundColor: Color.fromARGB(255, 62, 136, 201),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(13),
                         ),
                       ),
-                      Expanded(
-                        child: DropdownSearch(
-                          dropdownDecoratorProps: DropDownDecoratorProps(
-                              dropdownSearchDecoration: InputDecoration(
-                                  labelText: 'select Doctor',
-                                  prefixIcon: Icon(Icons.search),
-                                  border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(13)))),
-                          items: [
-                            'ALL doctors',
-                            'Dr.jhon',
-                            'Dr.ASHA',
-                            'Dr.smith',
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-                ElevatedButton(
-                    style: ButtonStyle(
-                        shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(13))),
-                        fixedSize: WidgetStatePropertyAll(Size(150, 40)),
-                        backgroundColor: WidgetStatePropertyAll(
-                            Color.fromARGB(255, 62, 136, 201))),
-                    onPressed: () {},
-                    child: Text(
-                      'Next',
-                      style: TextStyle(
+                      child: Text(
+                        'Next',
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          color: Colors.white),
-                    ))
-              ],
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class StepIndicator extends StatelessWidget {
+  final String step;
+  final String label;
+
+  StepIndicator({required this.step, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 20,
+            backgroundColor: Colors.blue,
+            child: Text(
+              step,
+              style: TextStyle(color: Colors.white),
             ),
           ),
+          SizedBox(width: 8),
+          Text(label),
         ],
       ),
     );

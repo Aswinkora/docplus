@@ -1,7 +1,9 @@
 import 'package:docplus/components/Textform.dart';
 import 'package:docplus/components/logbutton.dart';
 import 'package:flutter/material.dart';
-
+void main(List<String> args) {
+  runApp(MaterialApp(home: LoginPage(),));
+}
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
