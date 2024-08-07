@@ -1,5 +1,4 @@
 import 'package:docplus/webapp/webapp/appointment.dart';
-import 'package:docplus/webapp/webapp/timeslot.dart';
 import 'package:flutter/material.dart';
 
 void main() {
