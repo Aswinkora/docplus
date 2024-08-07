@@ -58,9 +58,8 @@ class Regform extends StatelessWidget {
               )),
           label: Text(
             label,
-            style: TextStyle(
-                fontWeight: FontWeight.w700,
-                color: Color.fromARGB(253, 40, 58, 217)),
+            style:
+                TextStyle(fontWeight: FontWeight.w700, color: Colors.blueGrey),
           )),
     );
   }

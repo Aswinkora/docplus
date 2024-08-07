@@ -1,4 +1,4 @@
-import 'package:docplus/screen/book.dart';
+import 'package:docplus/screen/registration.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,6 +17,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: Appoinment());
+        home: Register());
   }
 }
