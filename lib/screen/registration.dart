@@ -1,5 +1,4 @@
 import 'package:docplus/components/Textform.dart';
-import 'package:docplus/components/logbutton.dart';
 import 'package:docplus/logos/logos.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +21,7 @@ class _RegisterState extends State<Register> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Center(child: backgroud),
+        title: const Center(child: backgroud,),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -47,14 +46,14 @@ class _RegisterState extends State<Register> {
                       ),
                       Regform(
                         controller: namecntrl,
-                        label: 'NAME',
+                        label: 'Name',
                       ),
                       SizedBox(
                         height: 20,
                       ),
                       Regform(
                         controller: emailcntrl,
-                        label: 'EMAIL',
+                        label: 'Email',
                       ),
                       SizedBox(
                         height: 20,
@@ -65,7 +64,7 @@ class _RegisterState extends State<Register> {
                           Expanded(
                             child: Regform(
                               controller: namecntrl,
-                              label: 'AGE',
+                              label: 'Age',
                             ),
                           ),
                           SizedBox(
@@ -74,9 +73,8 @@ class _RegisterState extends State<Register> {
                           Expanded(
                             child: DropdownButtonFormField<String>(
                               decoration: InputDecoration(
-                                  labelText: 'SEX',
-                                  labelStyle: TextStyle(
-                                      color: Color.fromARGB(253, 40, 58, 217)),
+                                  labelText: 'Sex',
+                                  labelStyle: TextStyle(color: Colors.blueGrey),
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
                                           style: BorderStyle.solid,
@@ -118,7 +116,7 @@ class _RegisterState extends State<Register> {
                                       borderRadius: BorderRadius.circular(13))),
                               fixedSize: WidgetStatePropertyAll(Size(400, 55)),
                               backgroundColor: WidgetStatePropertyAll(
-                                  Color.fromARGB(253, 40, 58, 217))),
+                                  Color.fromARGB(255, 62, 136, 201))),
                           onPressed: () {},
                           child: Text(
                             'REGISTER',
