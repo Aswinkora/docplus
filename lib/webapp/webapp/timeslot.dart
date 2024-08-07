@@ -29,6 +29,22 @@ class _PatientTimeState extends State<PatientTime> {
           style: TextStyle(fontSize: 20, color: Colors.white),
         )),
       ),
+      body: Column(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height / 3,
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 20,
+                ),
+                Column(children: [Text('Dr.Smith'), Text('DENTISTRY')]),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
