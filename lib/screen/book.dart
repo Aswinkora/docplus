@@ -113,7 +113,7 @@ class _AppoinmentState extends State<Appoinment>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doctor Profile'),
+        title: Text('Doctor Profile'),centerTitle: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,7 +123,7 @@ class _AppoinmentState extends State<Appoinment>
             child: Row(
               children: [
                 CircleAvatar(
-                  radius: 30,
+                  radius: 45,
                 ),
                 SizedBox(width: 10),
                 Column(
@@ -154,7 +154,7 @@ class _AppoinmentState extends State<Appoinment>
               controller: _tabController,
               tabs: [
                 Tab(text: 'Schedule'),
-                Tab(text: 'Details & Review'),
+                Tab(text: 'Details '),
               ],
               indicator: BoxDecoration(
                 color: Colors.blue, // Color for the selected tab

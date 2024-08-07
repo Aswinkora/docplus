@@ -1,3 +1,5 @@
+import 'package:docplus/screen/detail.dart';
+import 'package:docplus/screen/doctordetail.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -30,7 +32,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: ListView(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,21 +44,23 @@ class _DoctorsPageState extends State<DoctorsPage> {
                         backgroundColor: Colors.green,
                         backgroundImage: NetworkImage(
                             "https://www.shutterstock.com/image-photo/happy-beautiful-young-latin-doctor-woman-2389637807"),
-                        radius: 30, // Adjust the radius as needed
+                        radius: 20, // Adjust the radius as needed
                       ),
                       SizedBox(
                           width: 10), // Add some space between the avatar and text
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Welcome Back",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 1, top: 0, right: 10),
+                              child: Text(
+                                "Welcome Back",
+                                style: TextStyle(fontSize: 10),
+                              ),
                             ),
                             Text(
                               "Mr. Williamson",
-                              style: TextStyle(fontSize: 14, color: Colors.grey),
+                              style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                             ),
                           ]),
                     ],
@@ -64,13 +68,13 @@ class _DoctorsPageState extends State<DoctorsPage> {
                   Row(
                     children: [
                       IconButton(
-                        icon: Icon(Icons.search),
+                        icon: Icon(Icons.search, size: 25),
                         onPressed: () {
                           // Add search functionality here
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.notifications),
+                        icon: Icon(Icons.notifications, size: 25),
                         onPressed: () {
                           // Add notification functionality here
                         },
@@ -84,7 +88,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                 options: CarouselOptions(
                   height: 200.0,
                   aspectRatio: 16 / 9,
-                  viewportFraction: 0.8,
+                  viewportFraction: 1.0,
                   initialPage: 0,
                   enableInfiniteScroll: true,
                   reverse: false,
@@ -104,9 +108,11 @@ class _DoctorsPageState extends State<DoctorsPage> {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 5.0),
+                        width: 1000,
+                        height: 1000,
+                        margin: EdgeInsets.symmetric(horizontal: 1.0),
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
                           color: Colors.amber,
                         ),
                         child: Image.network(item, fit: BoxFit.cover),
@@ -117,10 +123,13 @@ class _DoctorsPageState extends State<DoctorsPage> {
               ),
               SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Find your doctor"),
-                  Spacer(),
-                  Text("See All >"),
+                  Padding(
+                    padding: const EdgeInsets.all(3.0),
+                    child: Text("Find your doctor", style: TextStyle(fontWeight: FontWeight.bold)),
+                  ),
+                  Text("See All >", style: TextStyle(fontSize: 12)),
                 ],
               ),
               SizedBox(height: 10),
@@ -134,7 +143,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                         width: 70,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.blue,
+                          color: Colors.grey,
                         ),
                       ),
                       SizedBox(height: 10),
@@ -148,7 +157,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                         width: 70,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.blue,
+                          color: Colors.grey,
                         ),
                       ),
                       SizedBox(height: 10),
@@ -162,7 +171,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                         width: 70,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.blue,
+                          color: Colors.grey,
                         ),
                       ),
                       SizedBox(height: 10),
@@ -176,7 +185,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                         width: 70,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.blue,
+                          color: Colors.grey,
                         ),
                       ),
                       SizedBox(height: 10),
@@ -190,85 +199,141 @@ class _DoctorsPageState extends State<DoctorsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Popular Doctors"),SizedBox(width: 160,),
-                      Text("See All >")
+                      Text("Popular Doctors", style: TextStyle(fontWeight: FontWeight.bold)),
+                      GestureDetector(onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>DoctorsDetailPage()));
+                      },child: Text("See All >", style: TextStyle(fontSize: 12),)),
                     ],
                   ),
                   SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.blue,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text("Chloe Kelly"),SizedBox(width: 100,),
-                              Text("Fees 50.99")
-                            ],
+                  Card(
+                    child: Row(
+                      children: [SizedBox(width: 10,),
+                        Container(
+                          height: 70,
+                          width: 70,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.blue,
                           ),
-                          Text("M.Ch(Neuro)"),
-                          Row(
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(Icons.star),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Text("Chloe Kelly", style: TextStyle(fontWeight: FontWeight.bold)),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 15,right: 5),
+                                    child: Text("Fees 50.99", style: TextStyle(color: Colors.green)),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Text("M.Ch(Neuro)", style: TextStyle(color: Colors.grey)),
+                              ),
                               Row(
                                 children: [
-                                  Text("4.5(2530)"),SizedBox(width: 60,),
-                                  ElevatedButton(onPressed: (){}, child: Text("Book Now"))
+                                  Icon(Icons.star, color: Colors.yellow),
+                                  SizedBox(width: 5),
+                                  Text("4.5(2530)"),
+                                  Spacer(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 15,right: 5),
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Book Now",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.green,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10), // Rectangle shape
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.blue,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text("Chloe Kelly"),SizedBox(width: 100,),
-                              Text("Fees 50.99")
-                            ],
+                  Card(
+                    child: Row(
+                      children: [SizedBox(width: 10,),
+                        Container(
+                          height: 70,
+                          width: 70,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.blue,
                           ),
-                          Text("M.Ch(Neuro)"),
-                          Row(
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(Icons.star),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Text("Chloe Kelly", style: TextStyle(fontWeight: FontWeight.bold)),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 15,right: 5),
+                                    child: Text("Fees 50.99", style: TextStyle(color: Colors.green)),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Text("M.Ch(Neuro)", style: TextStyle(color: Colors.grey)),
+                              ),
                               Row(
                                 children: [
-                                  Text("4.5(2530)"),SizedBox(width: 60,),
-                                  ElevatedButton(onPressed: (){}, child: Text("Book Now"))
+                                  Icon(Icons.star, color: Colors.yellow),
+                                  SizedBox(width: 5),
+                                  Text("4.5(2530)"),
+                                  Spacer(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 15,right: 5),
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Book Now",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.green,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10), // Rectangle shape
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                      
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
