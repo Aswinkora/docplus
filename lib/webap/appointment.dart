@@ -1,14 +1,6 @@
-import 'package:docplus/logos/logos.dart';
-import 'package:docplus/webap/componentsweb/constweb.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: BookAppointment(),
-    debugShowCheckedModeBanner: false,
-  ));
-}
+
 
 class BookAppointment extends StatefulWidget {
   const BookAppointment({super.key});
@@ -22,16 +14,16 @@ class _BookAppointmentState extends State<BookAppointment> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   elevation: 0,
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {},
-      //       icon: Icon(Icons.home, size: 30, color: Colors.blue),
-      //     ),
-      //   ],
-      // ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.home, size: 30, color: Colors.blue),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
